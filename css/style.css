@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto Slab', serif;
+}
+
+.container {
+    background-color: whitesmoke;
+    min-height: 100vh;
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+#board {
+    background-color: #e5e5f7;
+    opacity: 0.9;
+    background-image:  linear-gradient(#3c8424 1px, transparent 1px), linear-gradient(to right, #3c8424 1px, #e5e5f7 1px);
+    background-size: 20px 20px;
+    width: 150vmin;
+    height: 85vmin;
+    display: grid;
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(18, 1fr);
+    border: 2px solid rgba(0, 0, 0, 0.8);
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+#game{
+    background: linear-gradient(rgb(243, 235, 165), lightblue);
+    width: 35vmin;
+    height: 8vmin;
+    display: flex;
+    justify-content: center;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    font-size: 2.25rem;
+    color: red;
+    font-weight: 900;
+}
+
+#levelBox {
+    background: linear-gradient(rgb(236, 187, 234), lightblue);
+    width: 35vmin;
+    height: 10vmin;
+    display: flex;
+    justify-content: center;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+.score {
+    background: linear-gradient(rgb(181, 235, 156), lightblue);
+    width: 35vmin;
+    height: 15vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    font-size: 2.25rem;
+    font-weight: 900;
+}
+
+.status {
+    background-color:white;
+    width: 35vmin;
+    height: 18vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    font-weight: 900;
+}
+
+.status img {
+    height: 60px;
+    width: 60px;
+}
+
+.joe {
+    background-color: white;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.foe {
+    background-color: pink;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.powerups {
+    background-color: lightgreen;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.home {
+    border-radius: 50%;
+    background-color: plum;
+    animation: rotation 1s infinite linear;
+}
