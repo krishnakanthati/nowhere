@@ -3,7 +3,7 @@ let inputDir = { x: 0, y: 0 }
 const moveSound = new Audio('turn.mp3')
 const gameOverSound = new Audio('gameover.mp3')
 const powerupSound = new Audio('powerups.mp3')
-let speed = 2;
+let speed = 3;
 let lastPaintTime = 0;
 let score = 14
 let level = 0
@@ -52,9 +52,7 @@ let levelup = [
 
 let powerups = { x: 5, y: 5 }
 
-let home = [
-    { x: 18, y: 10 }
-]
+let home = { x: 17, y: 9 }
 
 function main(ctime) {
     window.requestAnimationFrame(main)
@@ -111,15 +109,47 @@ function encounter() {
     }
 }
 
+function multipleOf15(score) {
+    if (score != 0) {
+        if (score % 3 === 0 && score % 5 === 0) {
+            return true
+        }
+        else return false
+    }
+}
+
+function isHome() {
+    if (joe.x === home.x && joe.y === home.y) return true
+    else false
+}
+
 function gameEngine() {
 
     if (encounter()) {
         gameOverSound.play()
         inputDir = { x: 0, y: 0 }
         alert("Game Over.")
-        joe = { x: 0, y: 0 }
         score = 14
         level = 0
+        speed = 3
+        scoreBox.innerHTML = "Score: " + score
+        joe = { x: 0, y: 0 }
+    }
+
+    if (isHome() && multipleOf15(score)) {
+        level += 1
+        speed != 10 ? speed += 1 : speed = 5
+        joe = { x: 9, y: 5 }
+        foe = [
+            { x: 18, y: 0 },
+            { x: 18, y: 0 },
+            { x: 18, y: 0 },
+            { x: 18, y: 0 },
+        ]
+        powerups = {
+            x: Math.round(1 + (17 - 1) * Math.random()), y: Math.round(1 + (9 - 1) * Math.random())
+        }
+        score += 1
         scoreBox.innerHTML = "Score: " + score
     }
 
@@ -133,20 +163,23 @@ function gameEngine() {
             hiScoreBox.innerHTML = "Hi Score: " + hiscoreval
         }
 
-        if (score === parseInt(score / 15, 15) * 15) {
-            level += 1
-            speed != 10 ? speed += 1 : speed = 5
-            // levelBox.innerHTML = "Level " + level
-        }
         scoreBox.innerHTML = "Score: " + score
 
         powerupSound.play()
-        let a = 1
-        let b = 17
-        let p = 1
-        let q = 9
-        powerups = {
-            x: Math.round(a + (b - a) * Math.random()), y: Math.round(p + (q - p) * Math.random())
+        if (!multipleOf15(score)) {
+            console.log(multipleOf15(score))
+            let a = 1
+            let b = 17
+            let p = 1
+            let q = 9
+            powerups = {
+                x: Math.round(a + (b - a) * Math.random()), y: Math.round(p + (q - p) * Math.random())
+            }
+        }
+        else {
+            powerups = {
+                x: -1, y: -1
+            }
         }
     }
 
